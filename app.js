@@ -28,3 +28,13 @@ app.get('/', function(req,res){
 app.listen('3000', function(){
   console.log('Servidor OK');
 })
+
+app.get('/api/producto', (req,res)=>{
+  conexion.query('SELECT * FROM producto', (error,filas)=>{
+      if(error){
+          throw error;
+      }else{
+          res.send(filas);
+      }
+  });
+});
