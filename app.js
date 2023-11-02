@@ -38,3 +38,16 @@ app.get('/api/producto', (req,res)=>{
       }
   });
 });
+
+
+app.get('/api/producto/:id', (req,res)=>{
+  conexion.query('SELECT * FROM producto WHERE id=?', [req.params.id] , (error,fila)=>{
+      if(error){
+          throw error;
+      }else{
+         res.send(fila);
+         res.send(fila[0].descripción);
+      }
+  });
+});
+
