@@ -74,3 +74,15 @@ app.put('/api/producto/:id', (req, res) => {
     }
   });
 });
+
+app.delete('/api/producto/:id', (req, res) => {
+  const id = req.params.id;
+  const sql = `DELETE FROM producto WHERE id = ${id}`;
+  conexion.query(sql, (error, results) => {
+    if (error) {
+      throw error;
+    } else {
+      res.send({ message: 'Producto eliminado correctamente' });
+    }
+  });
+});
